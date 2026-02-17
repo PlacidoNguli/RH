@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RH · painel completo · menu dinâmico</title>
+    <!-- Font & icons (clean, minimal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR (menu lateral com submenus e expansão hover) -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>RH<span>sistema</span></h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- Dashboard (ativo) -->
+                <div class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+
+                <!-- Colaboradores com submenu -->
+                <div class="nav-item" onclick="toggleSubmenu('submenu-colab')">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Colaboradores</span>
+                    <i class="fas fa-chevron-right arrow" id="arrow-colab"></i>
+                </div>
+                <div class="submenu" id="submenu-colab">
+                     <div class="submenu-item">Registar</div>
+                    <div class="submenu-item">Lista completa</div>
+                    <div class="submenu-item">Documentação</div>
+                </div>
+
+                <!-- Ponto com submenu -->
+                <div class="nav-item" onclick="toggleSubmenu('submenu-ponto')">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Ponto</span>
+                    <i class="fas fa-chevron-right arrow" id="arrow-ponto"></i>
+                </div>
+                <div class="submenu" id="submenu-ponto">
+                    <div class="submenu-item">Registros</div>
+                    <div class="submenu-item">Justificativas</div>
+                    <div class="submenu-item">Escalas</div>
+                </div>
+
+                <!-- Folha com submenu -->
+                <div class="nav-item" onclick="toggleSubmenu('submenu-folha')">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Folha</span>
+                    <i class="fas fa-chevron-right arrow" id="arrow-folha"></i>
+                </div>
+                <div class="submenu" id="submenu-folha">
+                    <div class="submenu-item">Processamento</div>
+                    <div class="submenu-item">Impostos</div>
+                    <div class="submenu-item">Benefícios</div>
+                </div>
+
+                <!-- Relatórios (sem submenu) -->
+                <div class="nav-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Relatórios</span>
+                </div>
+
+                <!-- Configurações com submenu -->
+                <div class="nav-item" onclick="toggleSubmenu('submenu-config')">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                    <i class="fas fa-chevron-right arrow" id="arrow-config"></i>
+                </div>
+                <div class="submenu" id="submenu-config">
+                    <div class="submenu-item">Perfil</div>
+                    <div class="submenu-item">Notificações</div>
+                    <div class="submenu-item">Segurança</div>
+                    <div class="submenu-item">Integrações</div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-details">
+                        <div class="user-name">Ana Dias</div>
+                        <div class="user-role">Gestora de RH</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+            <!-- Topbar com botão de tema -->
+            <header class="topbar">
+                <div class="content-wrapper">
+                    <div class="page-title">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </div>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                        <span>Modo escuro</span>
+                        <i class="fas fa-sun" style="display: none;"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Conteúdo do dashboard (mesmo conteúdo anterior) -->
+            <div class="content-area">
+                <div class="dashboard-grid">
+                    <!-- Card 1: Total colaboradores -->
+                    <div class="card">
+                        <div class="flex-row">
+                            <span class="stat-icon"><i class="fas fa-user-friends"></i></span>
+                            <span class="badge">+12%</span>
+                        </div>
+                        <div class="stat-value">248</div>
+                        <div class="stat-label">Total colaboradores</div>
+                        <div style="margin-top: 12px; font-size: 0.9rem;">
+                            <span class="green">●</span> 214 ativos
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Admissões -->
+                    <div class="card">
+                        <div class="flex-row">
+                            <span class="stat-icon"><i class="fas fa-user-plus"></i></span>
+                            <span class="badge">+5</span>
+                        </div>
+                        <div class="stat-value">18</div>
+                        <div class="stat-label">Admissões (mês)</div>
+                        <div style="margin-top: 12px; font-size: 0.9rem;">
+                            <span class="blue">●</span> 3 em processo
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Férias/Licenças -->
+                    <div class="card">
+                        <div class="flex-row">
+                            <span class="stat-icon"><i class="fas fa-umbrella-beach"></i></span>
+                        </div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Em licença/férias</div>
+                        <div class="progress-bar" style="margin-top: 16px;">
+                            <div class="progress-fill" style="width: 72%;"></div>
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">72% da meta</div>
+                    </div>
+
+                    <!-- Card 4: Turnover -->
+                    <div class="card">
+                        <div class="flex-row">
+                            <span class="stat-icon"><i class="fas fa-chart-line"></i></span>
+                            <span class="badge">-0.8%</span>
+                        </div>
+                        <div class="stat-value">4.2%</div>
+                        <div class="stat-label">Turnover mensal</div>
+                        <div style="margin-top: 12px; color: var(--accent-green);">▼ abaixo da média</div>
+                    </div>
+
+                    <!-- Card 5: Departamentos (span 6) -->
+                    <div class="card card-span-6">
+                        <div class="flex-row" style="margin-bottom: 20px;">
+                            <h3 style="font-weight: 500;">Departamentos</h3>
+                            <i class="fas fa-ellipsis-h action-icon"></i>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div>
+                                <div class="flex-row" style="margin-bottom: 4px;">
+                                    <span>Tecnologia</span>
+                                    <span style="font-weight: 500;">78</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 78%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex-row" style="margin-bottom: 4px;">
+                                    <span>RH & Admin</span>
+                                    <span style="font-weight: 500;">42</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 42%; background-color: var(--accent-blue);"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex-row" style="margin-bottom: 4px;">
+                                    <span>Comercial</span>
+                                    <span style="font-weight: 500;">64</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 64%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex-row" style="margin-bottom: 4px;">
+                                    <span>Operações</span>
+                                    <span style="font-weight: 500;">51</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 51%; background-color: var(--accent-blue);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Aniversariantes (span 6) -->
+                    <div class="card card-span-6">
+                        <div class="flex-row" style="margin-bottom: 20px;">
+                            <h3 style="font-weight: 500;">Aniversariantes · próximos dias</h3>
+                            <span class="badge">4 eventos</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div class="flex-row">
+                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Carlos Mendes</span>
+                                <span style="color: var(--text-secondary);">21 fev</span>
+                            </div>
+                            <div class="flex-row">
+                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Juliana Farias</span>
+                                <span style="color: var(--text-secondary);">22 fev</span>
+                            </div>
+                            <div class="flex-row">
+                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Roberto Lima</span>
+                                <span style="color: var(--text-secondary);">24 fev</span>
+                            </div>
+                            <div class="flex-row">
+                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Ana Clara Souza</span>
+                                <span style="color: var(--text-secondary);">26 fev</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="flex-row">
+                            <span><i class="fas fa-calendar-alt blue" style="margin-right: 8px;"></i>Confraternização</span>
+                            <span>28 fev</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Tabela colaboradores (span 12) -->
+                    <div class="card card-span-12">
+                        <div class="flex-row" style="margin-bottom: 20px;">
+                            <h3 style="font-weight: 500;">Últimos admitidos</h3>
+                            <div>
+                                <i class="fas fa-search action-icon"></i>
+                                <i class="fas fa-filter action-icon"></i>
+                            </div>
+                        </div>
+                        <table class="employee-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Departamento</th>
+                                    <th>Status</th>
+                                    <th>Admissão</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mariana Duarte</td>
+                                    <td>Tecnologia</td>
+                                    <td><span class="status-indicator status-active"></span>Ativo</td>
+                                    <td>12/02/2025</td>
+                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Rafael Campos</td>
+                                    <td>Comercial</td>
+                                    <td><span class="status-indicator status-training"></span>Treinamento</td>
+                                    <td>10/02/2025</td>
+                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Luciana Alves</td>
+                                    <td>RH</td>
+                                    <td><span class="status-indicator status-active"></span>Ativo</td>
+                                    <td>05/02/2025</td>
+                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Thiago Nogueira</td>
+                                    <td>Operações</td>
+                                    <td><span class="status-indicator status-onleave"></span>Licença</td>
+                                    <td>28/01/2025</td>
+                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script para alternar tema e controlar submenus -->
+    <script>
+        // Controle de tema (dark/light)
+        const toggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+        const moonIcon = toggleBtn.querySelector('.fa-moon');
+        const sunIcon = toggleBtn.querySelector('.fa-sun');
+        const btnText = toggleBtn.querySelector('span');
+
+        function updateThemeButton() {
+            const isDark = body.classList.contains('dark-mode');
+            moonIcon.style.display = isDark ? 'none' : 'inline-block';
+            sunIcon.style.display = isDark ? 'inline-block' : 'none';
+            btnText.textContent = isDark ? 'Modo claro' : 'Modo escuro';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            updateThemeButton();
+        });
+
+        updateThemeButton();
+
+        // Controle de submenus (expandir/recolher)
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            const arrowId = 'arrow-' + id.split('-')[1];
+            const arrow = document.getElementById(arrowId);
+            
+            if (submenu && arrow) {
+                submenu.classList.toggle('expanded');
+                arrow.classList.toggle('rotated');
+            }
+        }
+
+        // Inicializar setas e submenus (opcional: manter um expandido)
+        // Por padrão, todos começam fechados
+    </script>
+</body>
+</html>
