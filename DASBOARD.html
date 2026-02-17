@@ -3,107 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RH · painel completo · menu dinâmico</title>
-    <!-- Font & icons (clean, minimal) -->
+    <title>RH Dashboard · Gestão de Pessoas</title>
+    <!-- Font & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
- <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+      
+    </style>
 </head>
 <body>
     <div class="app-layout">
-        <!-- SIDEBAR (menu lateral com submenus e expansão hover) -->
+        <!-- SIDEBAR -->
         <aside class="sidebar">
-            <div class="sidebar-logo">
+            <div class="logo-area">
                 <div class="logo-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h2>RH<span>sistema</span></h2>
+                <div class="logo-text">
+                    <h1>RH Gestão</h1>
+                    <span>Recursos Humanos</span>
+                </div>
             </div>
 
-            <nav class="sidebar-nav">
-                <!-- Dashboard (ativo) -->
-                <div class="nav-item active">
+       
+
+            <div class="menu-section">
+                <div class="menu-title">Principal</div>
+                <div class="menu-item active">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </div>
+            </div>
 
-                <!-- Colaboradores com submenu -->
-                <div class="nav-item" onclick="toggleSubmenu('submenu-colab')">
+            <div class="menu-section">
+                <div class="menu-title">Performance</div>
+                
+                <!-- Dropdown Colaboradores -->
+                <div class="menu-item" onclick="toggleDropdown('dropdown-colab')">
                     <i class="fas fa-user-tie"></i>
                     <span>Colaboradores</span>
-                    <i class="fas fa-chevron-right arrow" id="arrow-colab"></i>
+                    <i class="fas fa-chevron-right menu-arrow" id="arrow-colab"></i>
                 </div>
-                <div class="submenu" id="submenu-colab">
-                     <div class="submenu-item">Registar</div>
-                    <div class="submenu-item">Lista completa</div>
-                    <div class="submenu-item">Documentação</div>
-                </div>
-
-                <!-- Ponto com submenu -->
-                <div class="nav-item" onclick="toggleSubmenu('submenu-ponto')">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>Ponto</span>
-                    <i class="fas fa-chevron-right arrow" id="arrow-ponto"></i>
-                </div>
-                <div class="submenu" id="submenu-ponto">
-                    <div class="submenu-item">Registros</div>
-                    <div class="submenu-item">Justificativas</div>
-                    <div class="submenu-item">Escalas</div>
+                <div class="dropdown-menu" id="dropdown-colab">
+                     <div class="dropdown-item">Novo Colaborador</div>
+                    <div class="dropdown-item">Lista completa</div>
+                    <div class="dropdown-item">Admissões</div>
+                    <div class="dropdown-item">Desligamentos</div>
+                    <div class="dropdown-item">Documentação</div>
                 </div>
 
-                <!-- Folha com submenu -->
-                <div class="nav-item" onclick="toggleSubmenu('submenu-folha')">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Folha</span>
-                    <i class="fas fa-chevron-right arrow" id="arrow-folha"></i>
+                <!-- Dropdown Cargos -->
+                <div class="menu-item" onclick="toggleDropdown('dropdown-cargos')">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Cargos</span>
+                    <i class="fas fa-chevron-right menu-arrow" id="arrow-cargos"></i>
                 </div>
-                <div class="submenu" id="submenu-folha">
-                    <div class="submenu-item">Processamento</div>
-                    <div class="submenu-item">Impostos</div>
-                    <div class="submenu-item">Benefícios</div>
+                <div class="dropdown-menu" id="dropdown-cargos">
+                    <div class="dropdown-item">Estrutura</div>
+                    <div class="dropdown-item">Salários</div>
+                    <div class="dropdown-item">Competências</div>
                 </div>
 
-                <!-- Relatórios (sem submenu) -->
-                <div class="nav-item">
-                    <i class="fas fa-chart-pie"></i>
+                <!-- Dropdown Departamentos -->
+                <div class="menu-item" onclick="toggleDropdown('dropdown-deptos')">
+                    <i class="fas fa-building"></i>
+                    <span>Departamentos</span>
+                    <i class="fas fa-chevron-right menu-arrow" id="arrow-deptos"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdown-deptos">
+                    <div class="dropdown-item">Tecnologia</div>
+                    <div class="dropdown-item">Comercial</div>
+                    <div class="dropdown-item">RH</div>
+                    <div class="dropdown-item">Operações</div>
+                </div>
+
+                <div class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
                     <span>Relatórios</span>
                 </div>
 
-                <!-- Configurações com submenu -->
-                <div class="nav-item" onclick="toggleSubmenu('submenu-config')">
-                    <i class="fas fa-cog"></i>
-                    <span>Configurações</span>
-                    <i class="fas fa-chevron-right arrow" id="arrow-config"></i>
-                </div>
-                <div class="submenu" id="submenu-config">
-                    <div class="submenu-item">Perfil</div>
-                    <div class="submenu-item">Notificações</div>
-                    <div class="submenu-item">Segurança</div>
-                    <div class="submenu-item">Integrações</div>
-                </div>
-            </nav>
-
-            <div class="sidebar-footer">
-                <div class="user-info">
-                    <div class="user-avatar">AD</div>
-                    <div class="user-details">
-                        <div class="user-name">Ana Dias</div>
-                        <div class="user-role">Gestora de RH</div>
-                    </div>
+                
+                 <div class="menu-item">
+              <i class="fas fa-cog"></i>
+                    <span>Definições</span>
+                      <i class="fas fa-chevron-right menu-arrow" id="arrow-deptos"></i>
                 </div>
             </div>
         </aside>
 
-        <!-- CONTEÚDO PRINCIPAL -->
+        <!-- MAIN CONTENT -->
         <main class="main-content">
-            <!-- Topbar com botão de tema -->
+            <!-- Topbar -->
             <header class="topbar">
-                <div class="content-wrapper">
-                    <div class="page-title">
-                        <i class="fas fa-tachometer-alt"></i>
-                        Dashboard
+                <div class="page-indicator">
+                    <i class="fas fa-home"></i>
+                    <span>/</span>
+                    <span>Dashboard</span>
+                </div>
+                <div class="topbar-actions">
+                    <div class="notification-badge">
+                        <i class="far fa-bell"></i>
+                        <span class="badge-count">5</span>
                     </div>
                     <button class="theme-toggle" id="themeToggle">
                         <i class="fas fa-moon"></i>
@@ -113,187 +117,263 @@
                 </div>
             </header>
 
-            <!-- Conteúdo do dashboard (mesmo conteúdo anterior) -->
+            <!-- Content -->
             <div class="content-area">
+                <!-- Welcome -->
+          
+
+                <!-- Performance Cards -->
+                <div class="performance-grid">
+                    <div class="perf-card">
+                        <div class="perf-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="perf-label">Total Colaboradores</div>
+                        <div class="perf-value">248</div>
+                        <div class="perf-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> +12% este mês
+                        </div>
+                    </div>
+
+                    <div class="perf-card">
+                        <div class="perf-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="perf-label">Admissões</div>
+                        <div class="perf-value">18</div>
+                        <div class="perf-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> +5 este mês
+                        </div>
+                    </div>
+
+                    <div class="perf-card">
+                        <div class="perf-icon">
+                            <i class="fas fa-user-minus"></i>
+                        </div>
+                        <div class="perf-label">Demissão</div>
+                        <div class="perf-value">8</div>
+                        <div class="perf-trend trend-down">
+                            <i class="fas fa-arrow-down"></i> -2 este mês
+                        </div>
+                    </div>
+
+                    <div class="perf-card">
+                        <div class="perf-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="perf-label">Em Férias</div>
+                        <div class="perf-value">12</div>
+                        <div class="perf-trend">
+                            <i class="fas fa-minus"></i> 5% do total
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Grid com 3 cards principais -->
                 <div class="dashboard-grid">
-                    <!-- Card 1: Total colaboradores -->
+                    <!-- Card Gráfico de Admissões (span 2) -->
+                    <div class="card grid-span-2">
+                        <div class="card-header">
+                            <h3 class="card-title">Relatório de Admissões · 2024</h3>
+                            <div class="month-badges">
+                                <span class="month-badge active">Jan</span>
+                                <span class="month-badge">Fev</span>
+                                <span class="month-badge">Mar</span>
+                                <span class="month-badge">Abr</span>
+                                <span class="month-badge">Mai</span>
+                                <span class="month-badge">Jun</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="admissionsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Card Aniversariantes do Mês -->
                     <div class="card">
-                        <div class="flex-row">
-                            <span class="stat-icon"><i class="fas fa-user-friends"></i></span>
-                            <span class="badge">+12%</span>
+                        <div class="card-header">
+                            <h3 class="card-title"> Aniversariantes · Fevereiro</h3>
+                            <span class="card-action">Ver todos</span>
                         </div>
-                        <div class="stat-value">248</div>
-                        <div class="stat-label">Total colaboradores</div>
-                        <div style="margin-top: 12px; font-size: 0.9rem;">
-                            <span class="green">●</span> 214 ativos
+                        <div class="birthday-list">
+                            <div class="birthday-item">
+                                <div class="birthday-person">
+                                    <div class="birthday-avatar">CM</div>
+                                    <span class="birthday-name">Carlos Mendes</span>
+                                </div>
+                                <div class="birthday-date">21 fev</div>
+                                <span class="birthday-badge">Hoje</span>
+                            </div>
+                            <div class="birthday-item">
+                                <div class="birthday-person">
+                                    <div class="birthday-avatar">JF</div>
+                                    <span class="birthday-name">Juliana Farias</span>
+                                </div>
+                                <div class="birthday-date">22 fev</div>
+                            </div>
+                            <div class="birthday-item">
+                                <div class="birthday-person">
+                                    <div class="birthday-avatar">RL</div>
+                                    <span class="birthday-name">Roberto Lima</span>
+                                </div>
+                                <div class="birthday-date">24 fev</div>
+                            </div>
+                            <div class="birthday-item">
+                                <div class="birthday-person">
+                                    <div class="birthday-avatar">AS</div>
+                                    <span class="birthday-name">Ana Clara Souza</span>
+                                </div>
+                                <div class="birthday-date">26 fev</div>
+                            </div>
+                            <div class="birthday-item">
+                                <div class="birthday-person">
+                                    <div class="birthday-avatar">PM</div>
+                                    <span class="birthday-name">Pedro Martins</span>
+                                </div>
+                                <div class="birthday-date">28 fev</div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 2: Admissões -->
+                <!-- Segunda linha: Departamentos e Colaboradores Recentes -->
+                <div class="dashboard-grid" style="margin-top: 24px;">
+                    <!-- Card Departamentos -->
                     <div class="card">
-                        <div class="flex-row">
-                            <span class="stat-icon"><i class="fas fa-user-plus"></i></span>
-                            <span class="badge">+5</span>
+                        <div class="card-header">
+                            <h3 class="card-title">Departamentos</h3>
+                            <span class="card-action">Detalhes</span>
                         </div>
-                        <div class="stat-value">18</div>
-                        <div class="stat-label">Admissões (mês)</div>
-                        <div style="margin-top: 12px; font-size: 0.9rem;">
-                            <span class="blue">●</span> 3 em processo
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Férias/Licenças -->
-                    <div class="card">
-                        <div class="flex-row">
-                            <span class="stat-icon"><i class="fas fa-umbrella-beach"></i></span>
-                        </div>
-                        <div class="stat-value">12</div>
-                        <div class="stat-label">Em licença/férias</div>
-                        <div class="progress-bar" style="margin-top: 16px;">
-                            <div class="progress-fill" style="width: 72%;"></div>
-                        </div>
-                        <div style="font-size: 0.85rem; color: var(--text-secondary);">72% da meta</div>
-                    </div>
-
-                    <!-- Card 4: Turnover -->
-                    <div class="card">
-                        <div class="flex-row">
-                            <span class="stat-icon"><i class="fas fa-chart-line"></i></span>
-                            <span class="badge">-0.8%</span>
-                        </div>
-                        <div class="stat-value">4.2%</div>
-                        <div class="stat-label">Turnover mensal</div>
-                        <div style="margin-top: 12px; color: var(--accent-green);">▼ abaixo da média</div>
-                    </div>
-
-                    <!-- Card 5: Departamentos (span 6) -->
-                    <div class="card card-span-6">
-                        <div class="flex-row" style="margin-bottom: 20px;">
-                            <h3 style="font-weight: 500;">Departamentos</h3>
-                            <i class="fas fa-ellipsis-h action-icon"></i>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 16px;">
-                            <div>
-                                <div class="flex-row" style="margin-bottom: 4px;">
-                                    <span>Tecnologia</span>
-                                    <span style="font-weight: 500;">78</span>
+                        <div class="dept-list">
+                            <div class="dept-item">
+                                <div class="dept-info">
+                                    <div class="dept-name">
+                                        <span>Tecnologia</span>
+                                        <span class="dept-count">78</span>
+                                    </div>
+                                    <div class="dept-bar">
+                                        <div class="dept-bar-fill" style="width: 78%;"></div>
+                                    </div>
                                 </div>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 78%;"></div></div>
                             </div>
-                            <div>
-                                <div class="flex-row" style="margin-bottom: 4px;">
-                                    <span>RH & Admin</span>
-                                    <span style="font-weight: 500;">42</span>
+                            <div class="dept-item">
+                                <div class="dept-info">
+                                    <div class="dept-name">
+                                        <span>Comercial</span>
+                                        <span class="dept-count">64</span>
+                                    </div>
+                                    <div class="dept-bar">
+                                        <div class="dept-bar-fill" style="width: 64%;"></div>
+                                    </div>
                                 </div>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 42%; background-color: var(--accent-blue);"></div></div>
                             </div>
-                            <div>
-                                <div class="flex-row" style="margin-bottom: 4px;">
-                                    <span>Comercial</span>
-                                    <span style="font-weight: 500;">64</span>
+                            <div class="dept-item">
+                                <div class="dept-info">
+                                    <div class="dept-name">
+                                        <span>Operações</span>
+                                        <span class="dept-count">51</span>
+                                    </div>
+                                    <div class="dept-bar">
+                                        <div class="dept-bar-fill" style="width: 51%;"></div>
+                                    </div>
                                 </div>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 64%;"></div></div>
                             </div>
-                            <div>
-                                <div class="flex-row" style="margin-bottom: 4px;">
-                                    <span>Operações</span>
-                                    <span style="font-weight: 500;">51</span>
+                            <div class="dept-item">
+                                <div class="dept-info">
+                                    <div class="dept-name">
+                                        <span>RH & Admin</span>
+                                        <span class="dept-count">42</span>
+                                    </div>
+                                    <div class="dept-bar">
+                                        <div class="dept-bar-fill" style="width: 42%;"></div>
+                                    </div>
                                 </div>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 51%; background-color: var(--accent-blue);"></div></div>
+                            </div>
+                            <div class="dept-item">
+                                <div class="dept-info">
+                                    <div class="dept-name">
+                                        <span>Financeiro</span>
+                                        <span class="dept-count">13</span>
+                                    </div>
+                                    <div class="dept-bar">
+                                        <div class="dept-bar-fill" style="width: 13%;"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 6: Aniversariantes (span 6) -->
-                    <div class="card card-span-6">
-                        <div class="flex-row" style="margin-bottom: 20px;">
-                            <h3 style="font-weight: 500;">Aniversariantes · próximos dias</h3>
-                            <span class="badge">4 eventos</span>
+                    <!-- Card Colaboradores Recentes -->
+                    <div class="card grid-span-2">
+                        <div class="card-header">
+                            <h3 class="card-title">Colaboradores Admitidos Recentemente</h3>
+                            <span class="card-action">Ver todos</span>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: 12px;">
-                            <div class="flex-row">
-                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Carlos Mendes</span>
-                                <span style="color: var(--text-secondary);">21 fev</span>
+                        <div class="recent-list">
+                            <div class="recent-item">
+                                <div class="recent-avatar">MD</div>
+                                <div class="recent-info">
+                                    <div class="recent-name">Mariana Duarte</div>
+                                    <div class="recent-meta">
+                                        <span><i class="fas fa-briefcase"></i> Tecnologia</span>
+                                        <span><i class="fas fa-calendar"></i> 12/02/2025</span>
+                                    </div>
+                                </div>
+                                <span class="recent-status status-active">Ativo</span>
                             </div>
-                            <div class="flex-row">
-                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Juliana Farias</span>
-                                <span style="color: var(--text-secondary);">22 fev</span>
+                            <div class="recent-item">
+                                <div class="recent-avatar">RC</div>
+                                <div class="recent-info">
+                                    <div class="recent-name">Rafael Campos</div>
+                                    <div class="recent-meta">
+                                        <span><i class="fas fa-briefcase"></i> Comercial</span>
+                                        <span><i class="fas fa-calendar"></i> 10/02/2025</span>
+                                    </div>
+                                </div>
+                                <span class="recent-status status-training">Treinamento</span>
                             </div>
-                            <div class="flex-row">
-                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Roberto Lima</span>
-                                <span style="color: var(--text-secondary);">24 fev</span>
+                            <div class="recent-item">
+                                <div class="recent-avatar">LA</div>
+                                <div class="recent-info">
+                                    <div class="recent-name">Luciana Alves</div>
+                                    <div class="recent-meta">
+                                        <span><i class="fas fa-briefcase"></i> RH</span>
+                                        <span><i class="fas fa-calendar"></i> 05/02/2025</span>
+                                    </div>
+                                </div>
+                                <span class="recent-status status-active">Ativo</span>
                             </div>
-                            <div class="flex-row">
-                                <span><i class="fas fa-birthday-cake" style="color: var(--accent-green); margin-right: 8px;"></i>Ana Clara Souza</span>
-                                <span style="color: var(--text-secondary);">26 fev</span>
+                            <div class="recent-item">
+                                <div class="recent-avatar">TN</div>
+                                <div class="recent-info">
+                                    <div class="recent-name">Thiago Nogueira</div>
+                                    <div class="recent-meta">
+                                        <span><i class="fas fa-briefcase"></i> Operações</span>
+                                        <span><i class="fas fa-calendar"></i> 28/01/2025</span>
+                                    </div>
+                                </div>
+                                <span class="recent-status status-active">Ativo</span>
+                            </div>
+                            <div class="recent-item">
+                                <div class="recent-avatar">BF</div>
+                                <div class="recent-info">
+                                    <div class="recent-name">Beatriz Freitas</div>
+                                    <div class="recent-meta">
+                                        <span><i class="fas fa-briefcase"></i> Tecnologia</span>
+                                        <span><i class="fas fa-calendar"></i> 25/01/2025</span>
+                                    </div>
+                                </div>
+                                <span class="recent-status status-active">Ativo</span>
                             </div>
                         </div>
-                        <hr>
-                        <div class="flex-row">
-                            <span><i class="fas fa-calendar-alt blue" style="margin-right: 8px;"></i>Confraternização</span>
-                            <span>28 fev</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 7: Tabela colaboradores (span 12) -->
-                    <div class="card card-span-12">
-                        <div class="flex-row" style="margin-bottom: 20px;">
-                            <h3 style="font-weight: 500;">Últimos admitidos</h3>
-                            <div>
-                                <i class="fas fa-search action-icon"></i>
-                                <i class="fas fa-filter action-icon"></i>
-                            </div>
-                        </div>
-                        <table class="employee-table">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Departamento</th>
-                                    <th>Status</th>
-                                    <th>Admissão</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mariana Duarte</td>
-                                    <td>Tecnologia</td>
-                                    <td><span class="status-indicator status-active"></span>Ativo</td>
-                                    <td>12/02/2025</td>
-                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>Rafael Campos</td>
-                                    <td>Comercial</td>
-                                    <td><span class="status-indicator status-training"></span>Treinamento</td>
-                                    <td>10/02/2025</td>
-                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>Luciana Alves</td>
-                                    <td>RH</td>
-                                    <td><span class="status-indicator status-active"></span>Ativo</td>
-                                    <td>05/02/2025</td>
-                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>Thiago Nogueira</td>
-                                    <td>Operações</td>
-                                    <td><span class="status-indicator status-onleave"></span>Licença</td>
-                                    <td>28/01/2025</td>
-                                    <td><i class="fas fa-chevron-right action-icon"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Script para alternar tema e controlar submenus -->
     <script>
-        // Controle de tema (dark/light)
+        // Theme toggle
         const toggleBtn = document.getElementById('themeToggle');
         const body = document.body;
         const moonIcon = toggleBtn.querySelector('.fa-moon');
@@ -310,24 +390,134 @@
         toggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             updateThemeButton();
+            // Atualiza cores dos gráficos
+            updateChartsTheme();
         });
 
         updateThemeButton();
 
-        // Controle de submenus (expandir/recolher)
-        function toggleSubmenu(id) {
-            const submenu = document.getElementById(id);
+        // Dropdown menus
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
             const arrowId = 'arrow-' + id.split('-')[1];
             const arrow = document.getElementById(arrowId);
             
-            if (submenu && arrow) {
-                submenu.classList.toggle('expanded');
+            if (dropdown && arrow) {
+                dropdown.classList.toggle('expanded');
                 arrow.classList.toggle('rotated');
             }
         }
 
-        // Inicializar setas e submenus (opcional: manter um expandido)
-        // Por padrão, todos começam fechados
+        // Charts
+        let admissionsChart;
+
+        function createCharts() {
+            const ctx = document.getElementById('admissionsChart').getContext('2d');
+            
+            // Destroi gráfico existente se houver
+            if (admissionsChart) {
+                admissionsChart.destroy();
+            }
+
+            const isDark = body.classList.contains('dark-mode');
+            const textColor = isDark ? '#94a3b8' : '#64748b';
+            const gridColor = isDark ? '#334155' : '#e2e8f0';
+
+            admissionsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Admissões 2024',
+                        data: [12, 19, 15, 17, 14, 18, 21, 16, 14, 10, 8, 5],
+                        borderColor: '#0D47A1',
+                        backgroundColor: 'rgba(13, 71, 161, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#1B5E20',
+                        pointBorderColor: '#FFFFFF',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Admissões: ${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: gridColor
+                            },
+                            ticks: {
+                                color: textColor
+                            },
+                            title: {
+                                display: true,
+                                text: 'Número de admissões',
+                                color: textColor
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: textColor,
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChartsTheme() {
+            if (admissionsChart) {
+                const isDark = body.classList.contains('dark-mode');
+                const textColor = isDark ? '#94a3b8' : '#64748b';
+                const gridColor = isDark ? '#334155' : '#e2e8f0';
+                
+                admissionsChart.options.scales.y.grid.color = gridColor;
+                admissionsChart.options.scales.y.ticks.color = textColor;
+                admissionsChart.options.scales.y.title.color = textColor;
+                admissionsChart.options.scales.x.ticks.color = textColor;
+                admissionsChart.update();
+            }
+        }
+
+        // Inicializa gráficos
+        createCharts();
+
+        // Month badges click
+        document.querySelectorAll('.month-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                document.querySelectorAll('.month-badge').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Simula atualização do gráfico (opcional)
+                const month = this.textContent;
+                console.log(`Filtrar por mês: ${month}`);
+            });
+        });
+
+        // Atualiza gráfico quando tema muda
+        window.updateChartsTheme = updateChartsTheme;
     </script>
 </body>
 </html>
