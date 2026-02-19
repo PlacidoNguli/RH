@@ -1,0 +1,497 @@
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(23, 42, 100, 0.7), rgba(16, 54, 168, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cadastro-container {
+            width: 100%;
+            max-width: 520px; /* ligeiramente maior para acomodar mais campos */
+            padding: 20px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cadastro-card {
+            background: rgba(215, 231, 215, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 35px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                        inset 0 0 30px rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .cadastro-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4),
+                        inset 0 0 40px rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo svg {
+            width: 50px;
+            height: 50px;
+            animation: pulse 3s infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo svg path {
+            stroke: #ffffff;
+            stroke-width: 2;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5)); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #41cd80;
+            text-align: center;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 1;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 24px 12px 50px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            outline: none;
+            background: rgba(92, 124, 92, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .input-group input:focus {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(92, 124, 92, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15),
+                        inset 0 2px 15px rgba(0, 0, 0, 0.15);
+            transform: scale(1.01);
+        }
+
+        .input-group input:focus + i {
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .input-group input:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(92, 124, 92, 0.25);
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(145deg, #218347, #2a9d5e);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(25, 108, 57, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+        }
+
+        .btn-cadastrar:hover {
+            background-position: 100% 50%;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(34, 151, 79, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-cadastrar:active {
+            transform: scale(0.98);
+        }
+
+        .termos {
+            text-align: center;
+            margin: 18px 0 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .termos a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.3);
+        }
+
+        .termos a:hover {
+            text-decoration: underline;
+            color: #41cd80;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-link span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .login-link a:hover {
+            color: #ffffff;
+            transform: scale(1.08);
+            text-decoration: underline;
+            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.5);
+        }
+
+
+
+        /* login*/
+      
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+  
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            background: rgba(215, 231, 215, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 35px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                        inset 0 0 30px rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .login-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4),
+                        inset 0 0 40px rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+    
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5)); }
+            100% { transform: scale(1); }
+        }
+
+     
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 1;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+     
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(145deg, #218347, #2a9d5e);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(25, 108, 57, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+        }
+
+        .btn-login:hover {
+            background-position: 100% 50%;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(25, 108, 57, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin: 18px 0;
+           
+        }
+
+        .forgot-password a {
+            color: rgba(215, 226, 251, 0.8);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .forgot-password a:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+            text-decoration: underline;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .register-link span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: 0 1px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .register-link a:hover {
+            color: #ffffff;
+            transform: scale(1.08);
+            text-decoration: underline;
+            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animações de entrada para os elementos */
+        .login-card > * {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        
+        .btn-login { animation-delay: 0.6s; }
+        .forgot-password { animation-delay: 0.7s; }
+        .register-link { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Adicionando ícones com Font Awesome */
+        .fa {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+
+
+        /* Animações de entrada para os elementos */
+        .cadastro-card > * {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .logo { animation-delay: 0.1s; }
+        h1 { animation-delay: 0.15s; }
+        .subtitle { animation-delay: 0.2s; }
+        .input-group:nth-of-type(1) { animation-delay: 0.25s; }
+        .input-group:nth-of-type(2) { animation-delay: 0.3s; }
+        .input-group:nth-of-type(3) { animation-delay: 0.35s; }
+        .input-group:nth-of-type(4) { animation-delay: 0.4s; }
+        .btn-cadastrar { animation-delay: 0.5s; }
+        .termos { animation-delay: 0.6s; }
+        .login-link { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ajuste para o ícone de olho (opcional) - não implementado para manter simplicidade, mas respeita o estilo */
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .cadastro-card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }

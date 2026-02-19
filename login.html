@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema</title>
+   <link rel="stylesheet" href="registo.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo -->
+            <div class="logo">
+                <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- Título e Subtítulo -->
+            <h1>Login</h1>
+            <p class="subtitle">Bem-vindo de volta! Por favor, faça login em sua conta.</p>
+
+            <!-- Formulário com ícones -->
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Digite seu e-mail" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Digite sua senha">
+            </div>
+
+            <!-- Botão -->
+            <button class="btn-login">
+                <i class="fas fa-arrow-right-to-bracket" style="margin-right: 8px;"></i>
+                Acessar Conta
+            </button>
+
+            <!-- Esqueceu a senha -->
+            <div class="forgot-password">
+                <a href="#">
+                    <i class="fas fa-question-circle" style="margin-right: 5px;"></i>
+                    Esqueceu sua senha?
+                </a>
+            </div>
+
+            <!-- Link de cadastro -->
+            <div class="register-link">
+                <span>Não tem uma conta?</span>
+                <a href="#">
+                    Cadastre-se
+                    <i class="fas fa-arrow-right" style="margin-left: 5px; font-size: 12px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sistema</title>
+   <link rel="stylesheet" href="registo.css">
+    </style>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cadastro-container">
+        <div class="cadastro-card">
+            <!-- Logo (mesmo ícone do login) -->
+            <div class="logo">
+                <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- Título e Subtítulo -->
+            <h1>Cadastro</h1>
+            <p class="subtitle">Crie sua conta gratuitamente e aproveite todos os recursos.</p>
+
+            <!-- Formulário com ícones (campos típicos de cadastro) -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="nome" placeholder="Nome completo" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="E-mail" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Senha">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="confirm-password" placeholder="Confirmar senha">
+            </div>
+
+            <!-- Botão de cadastro -->
+            <button class="btn-cadastrar">
+                <i class="fas fa-user-plus" style="margin-right: 8px;"></i>
+                Criar Conta
+            </button>
+
+            <!-- Termos e condições -->
+
+            <!-- Link para login (já tem conta) -->
+            <div class="login-link">
+                <span>Já possui uma conta?</span>
+                <a href="#">
+                    Entrar
+                    <i class="fas fa-arrow-right" style="margin-left: 5px; font-size: 12px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

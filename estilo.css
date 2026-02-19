@@ -10,16 +10,17 @@
             color: var(--text-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.5;
+      
         }
 
         /* ===== VARIÁVEIS (MODO CLARO) ===== */
         :root {
             --verde: #1B5E20;
-            --azul: #0D47A1;
+            --azul: #176def;
             --branco: #FFFFFF;
             --preto: #000000;
             
-            --bg-primary: #F5F7FA;
+            --bg-primary: #F7F9FC;
             --bg-surface: #FFFFFF;
             --bg-sidebar: #FFFFFF;
             --text-primary: #1e293b;
@@ -51,11 +52,13 @@
         .app-layout {
             display: flex;
             min-height: 100vh;
+          
+         
         }
 
         /* ===== SIDEBAR ===== */
         .sidebar {
-            width: 280px;
+            width: 240px;
             background-color: var(--bg-sidebar);
             border-right: 1px solid var(--border-light);
             padding: 24px 20px;
@@ -68,6 +71,9 @@
             transition: background-color 0.3s;
             z-index: 30;
             overflow-y: auto;
+            margin: 20px 0px 20px 20px;
+          
+            border-radius: 20px;
         }
 
         .logo-area {
@@ -131,6 +137,8 @@
         /* Menu items */
         .menu-section {
             margin-bottom: 24px;
+        
+          
         }
 
         .menu-title {
@@ -140,6 +148,7 @@
             color: var(--text-secondary);
             padding: 0 12px;
             margin-bottom: 8px;
+       
         }
 
         .menu-item {
@@ -211,6 +220,7 @@
 
         .menu-arrow.rotated {
             transform: rotate(90deg);
+            
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -218,6 +228,9 @@
             flex: 1;
             margin-left: 280px;
             min-width: 0;
+              margin-top: 20px;
+             
+          
         }
 
         /* Topbar */
@@ -231,6 +244,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+           background: #ffffff;
+           box-shadow:  9px 9px 18px #e5e8eb,
+             -9px -9px 18px #228df814;
+            border-radius: 20px;
+            margin-right: 20px;
+      
         }
 
         .page-indicator {
@@ -248,7 +267,27 @@
         .topbar-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content:space-around;
+           gap: 15px;
+           border-radius: 50px;
+           background: #ffffff;
+            box-shadow:  9px 9px 18px #e5e8eb,
+             -9px -9px 18px #228df814;
+            border-radius: 50px;
+            padding: 6px 20px;
+        }
+
+        .foto{
+            
+           background-color: #053fffb3;
+           width: 35px;
+           height: 35px;
+           border-radius: 50px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: #fff;
+           
         }
 
         .theme-toggle {
@@ -275,7 +314,7 @@
         }
 
         .notification-badge i {
-            font-size: 1.3rem;
+            font-size: 1rem;
             color: var(--text-secondary);
         }
 
@@ -285,14 +324,15 @@
             right: -5px;
             background-color: var(--verde);
             color: white;
-            font-size: 0.7rem;
+            font-size: 0.5rem;
             padding: 2px 6px;
             border-radius: 20px;
         }
 
         /* Content area */
         .content-area {
-            padding: 32px;
+            padding: 32px 10px;
+            margin-right: 20px;
         }
 
         /* Welcome section */
@@ -320,7 +360,9 @@
             margin-bottom: 32px;
         }
 
-        .perf-card {
+        .perf-card {display: flex;
+            align-items: center;
+        justify-content: space-between;
             background-color: var(--bg-surface);
             border-radius: 20px;
             padding: 20px;
